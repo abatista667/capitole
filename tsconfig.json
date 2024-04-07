@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {  
+      "jsx": "react-jsx",
+      "allowJs": true,
+      "moduleResolution": "node",
+      "outDir": "./dist",
+      "strict": false,
+      "esModuleInterop": true,
+      "sourceMap": true,
+      "paths": {
+        "@capitole/*": [
+          "./src/*"
+        ]
+      }
+    },
+    "include": ["src/**/*"]
+}
