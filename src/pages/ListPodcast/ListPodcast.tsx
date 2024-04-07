@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import Layout from "@capitole/components/Layout/Layout";
 import { useHeaderContext } from "@capitole/components/Header/HeaderContext";
 
-const filterPodcast = ({title, author}: PodCastResponse, filterValue: string) => {
+const filterPodcast = ({ title, author }: PodCastResponse, filterValue: string) => {
     return title.toLowerCase().includes(filterValue.toLowerCase()) ||
-            author.toLowerCase().includes(filterValue.toLowerCase()) 
+        author.toLowerCase().includes(filterValue.toLowerCase())
 }
 
 const ListPodcast = () => {
@@ -21,23 +21,24 @@ const ListPodcast = () => {
 
     useEffect(() => setHeaderLoading(isLoading), [setHeaderLoading, isLoading])
 
-    const filteredData = (filterValue ? data?.filter(item => filterPodcast(item, filterValue)) ?? [] : data)
+    const filteredData = (filterValue ? data?.filter(item => filterPodcast(item, filterValue)) ?? [] : data);
 
     return <Layout>
         <section className={classes.filter}>
             <div className={classes.badgeWrapper}>
-                <Badge badgeContent={filteredData?.length } showZero color="primary" max={100} />
+                <Badge badgeContent={filteredData?.length} showZero color="primary" max={100} />
             </div>
-            <TextField 
+            <TextField
                 fullWidth
                 placeholder="Filter podcast..."
-                size="small" 
-                value={filterValue} 
+                aria-label="Filter podcast"
+                size="small"
+                value={filterValue}
                 onChange={(ev) => setFilterValue(ev.target.value)} />
         </section>
-        <section className={classes.podcastList}>
+        {filteredData?.length ? <section className={classes.podcastList} aria-label="Podcast List">
             {filteredData?.map(item => <PodcastCard {...item} key={item.id} />)}
-        </section>
+        </section> : null}
     </Layout>
 }
 

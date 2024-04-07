@@ -11,7 +11,8 @@
         "@capitole/*": [
           "./src/*"
         ]
-      }
+      },
+      "types": ["node", "jest", "@testing-library/jest-dom"],
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
 }

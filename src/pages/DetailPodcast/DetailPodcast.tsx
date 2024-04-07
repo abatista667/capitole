@@ -9,11 +9,14 @@ import { makeNavigableRouteWithParams } from "@capitole/utils/makeNavigableRoute
 import { routes } from "@capitole/constants/routes"
 import { useEffect } from "react"
 import { useHeaderContext } from "@capitole/components/Header/HeaderContext"
+import { useSelectedPodcast } from "@capitole/hooks/useSelectedPodcast"
 
 const DetailPodcast = () => {
     const { classes } = useStyles();
     const { podcastId } = useParams<{ podcastId: string }>()
-    const { data, isLoading } = useListEpisodes(podcastId);
+    const { data, isLoading: episodesLoading  } = useListEpisodes(podcastId);
+    const { isLoading: podcastLoading } = useSelectedPodcast();
+    const isLoading = episodesLoading || podcastLoading
     const navigate = useNavigate();
 
     const { setHeaderLoading } = useHeaderContext();

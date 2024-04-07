@@ -37,9 +37,9 @@ export interface RawResponse {
 
 const url = "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
 
-const listPodcasts = async (): Promise<PodCastResponse[]> => {
+export const listPodcasts = async (): Promise<PodCastResponse[]> => {
     const response = await axios.get<{ contents: string }>(overrideOrigin(url))
-    
+
     const data= JSON.parse(response.data.contents)as RawResponse
 
     return data.feed.entry.map(item => {

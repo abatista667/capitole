@@ -13,6 +13,7 @@ export const cacheRequest = <T, P= undefined>(fun: RequestFunc<T>, args?: P) => 
     
     if(cache) {
         const storedCache = JSON.parse(cache) as CacheResponse
+        console.log(storedCache)
         if(new Date(storedCache.expiration) > new Date())
             return Promise.resolve(storedCache.data as T)
     }
@@ -22,6 +23,7 @@ export const cacheRequest = <T, P= undefined>(fun: RequestFunc<T>, args?: P) => 
         expiration: new Date(new Date().getTime() + CACHE_TIME),
         data: response
     }
+
     localStorage.setItem(key, JSON.stringify(newCache))
 
     return response
