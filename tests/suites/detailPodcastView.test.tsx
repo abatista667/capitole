@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import App from "@capitole/App"
 
 describe('Podcast List', () => {
-  it.skip('Renders correctly podcast detail correctly', async () => {
+  it('Renders correctly podcast detail correctly', async () => {
     render(
       <App />
     );
@@ -13,12 +13,13 @@ describe('Podcast List', () => {
 
     await userEvent.click(podcastButton);
 
-    const spinner = await screen.findByRole("progressbar");
-    expect(spinner).toBeInTheDocument();
+    expect(await screen.findByText("By The Joe Budden Network")).toBeInTheDocument();
+    expect(await screen.findByText("Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends.")).toBeInTheDocument();
 
-    await waitFor(() => expect(spinner).not.toBeInTheDocument())
+    expect(await screen.findByText("Episodes: 21")).toBeInTheDocument();
 
-    screen.debug();
+    const episodeList = await screen.findByRole("generic", { name: /Episode list/i});
 
+    expect(episodeList.childElementCount).toBe(21)
   });
 });

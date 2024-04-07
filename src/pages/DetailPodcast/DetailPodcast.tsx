@@ -37,7 +37,7 @@ const DetailPodcast = () => {
                         Episodes: {data.length}
                     </Typography>
                 </Paper>
-                <Paper className={classes.tbody}>
+                <Paper className={classes.tbody} aria-label="Episode list">
                     {data?.map(item => {
                         return <div 
                             key={item.id} 
