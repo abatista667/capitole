@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 import { HeaderContextProvider } from "@capitole/components/Header/HeaderContext";
 import { routes } from "./constants/routes";
+import ErrorBoundary from "./ErrorBoundary";
 
 const router = createBrowserRouter([
     {
@@ -31,9 +32,11 @@ const queryClient = new QueryClient()
 const App = () => {
     return <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-            <HeaderContextProvider>
+            <ErrorBoundary>
+                <HeaderContextProvider>
                     <RouterProvider router={router} />
-            </HeaderContextProvider>
+                </HeaderContextProvider>
+            </ErrorBoundary>
         </ThemeProvider>
     </QueryClientProvider>
 }

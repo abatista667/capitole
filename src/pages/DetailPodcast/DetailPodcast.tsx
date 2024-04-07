@@ -31,7 +31,7 @@ const DetailPodcast = () => {
             {!isLoading ? <div className={classes.episodes}>
                 <Paper className={classes.heading}>
                     <Typography variant="h1" component="div">
-                        Episodes
+                        Episodes: {data.length}
                     </Typography>
                 </Paper>
                 <Paper className={classes.tbody}>
