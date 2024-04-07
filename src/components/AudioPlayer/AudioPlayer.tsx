@@ -31,6 +31,8 @@ const AudioPlayer = ({ src }: AudioPlayerProps) => {
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const onPlayClick = () => {
+        if(!src) console.warn("source not found");
+
         if (state === "idle") {
             audioRef.current.play();
             setState("playing");
