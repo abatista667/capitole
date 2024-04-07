@@ -1,31 +1,31 @@
-# Capitole code chanllenge solution
+# Capitole code challenge solution
 ## Por Ariel Batista Sr. Frontend Developer
 
-## como ejecutar la solucion
+## Como ejecutar la solución
 
-La mejor forma es usar nvm <a>https://github.com/nvm-sh</a> para instalar la version exacta de nodejs, la misma esta en el archivo .nvmrc
+La mejor forma es usar nvm <a>https://github.com/nvm-sh</a> para instalar la version exacta de nodejs, la misma está en el archivo .nvmrc
 
-#Comandos de instalacion:
+## Comandos de instalación:
 ```
 nvm install
 nvm use
 npm i
 ```
 
-Ejecutar la solucion en modo development
+Ejecutar la solución en modo development
 ```
 npm start
 ```
 
-Ejecutar la solucion en modo producción
+Ejecutar la solución en modo producción
 ```
 npm run build
 cd dist
 npx serve
 ```
-Nota: puede cambar "npx serve" por el servidor web de su preferencia
+Nota: puede cambiar "npx serve" por el servidor web de su preferencia
 
-## ejecutar tests
+## Ejecutar tests
 
 ```
 npm run test
